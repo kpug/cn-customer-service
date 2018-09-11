@@ -3,18 +3,22 @@ package cc.kpug.cloudnative.customer.domain.account;
 import cc.kpug.cloudnative.customer.domain.BaseEntity;
 import cc.kpug.cloudnative.customer.domain.address.Address;
 import cc.kpug.cloudnative.customer.domain.creditcard.CreditCard;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Account extends BaseEntity {
 
     @Id
@@ -23,18 +27,18 @@ public class Account extends BaseEntity {
 
     private String accountNumber;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<CreditCard> creditCards = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<CreditCard> creditCards = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Address> addresses = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Address> addresses = new ArrayList<>();
 
-    public Account(String accountNumber, Set<Address> addresses) {
+    public Account(final String accountNumber, final List<Address> addresses) {
         this.accountNumber = accountNumber;
         this.addresses.addAll(addresses);
     }
 
-    public Account(String accountNumber) {
+    public Account(final String accountNumber) {
         this.accountNumber = accountNumber;
     }
 }

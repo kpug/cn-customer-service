@@ -1,4 +1,6 @@
 package cc.kpug.cloudnative.customer.domain.address;
 
-public interface AddressRepository {
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+public interface AddressRepository extends PagingAndSortingRepository<Address, Long> {
 }

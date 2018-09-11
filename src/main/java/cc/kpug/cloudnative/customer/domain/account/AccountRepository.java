@@ -1,4 +1,6 @@
 package cc.kpug.cloudnative.customer.domain.account;
 
-public interface AccountRepository {
+import org.springframework.data.repository.PagingAndSortingRepository;
+
+public interface AccountRepository extends PagingAndSortingRepository<Account, Long> {
 }
