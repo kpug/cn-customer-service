@@ -1,9 +1,11 @@
-package cc.kpug.cloudnative.customer.domain.creditcard;
+package cc.kpug.cloudnative.customer.domain.customer;
 
 import cc.kpug.cloudnative.customer.CustomerApplication;
 import cc.kpug.cloudnative.customer.domain.account.Account;
 import cc.kpug.cloudnative.customer.domain.address.Address;
 import cc.kpug.cloudnative.customer.domain.address.AddressType;
+import cc.kpug.cloudnative.customer.domain.creditcard.CreditCard;
+import cc.kpug.cloudnative.customer.domain.creditcard.CreditCardType;
 import cc.kpug.cloudnative.customer.domain.customer.Customer;
 import cc.kpug.cloudnative.customer.domain.customer.CustomerRepository;
 import java.util.UUID;
@@ -21,9 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CustomerApplication.class)
-@ActiveProfiles(profiles = "local")
+@ActiveProfiles(profiles = "test")
 @Rollback
-public class CreditCardServiceTest {
+public class CustomerRepositoryTest {
     @Autowired
     private CustomerRepository customerRepository;
 
